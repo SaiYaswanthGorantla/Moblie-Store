@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MoblieStore">
+<head>
+    <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MoblieStore</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="page-header">MoblieStore</h2>
+    </div>
+</div>
+<div ng-controller="StoreController as store"class="row">
+    <div ng-repeat="moblie in store.moblies track by $index"class="col-md-3">
+<img ng-src="{{moblie.image}}"width="250 px" height="300px">
+<p>Name:{{moblie.name}}</p>
+<p>Color:{{moblie.color}}</p>
+<p>Memory:{{moblie.memory}}</p>
+<p>price: &#8377;{{moblie.price}}</p>
+    <button type="button" ng-hide="{{store.moblie.isSoldOut}}"class="btn btn-danger" >BUY NOW</button>
+        <ul class="nav nav-tabs">
+            <li role="presentation" ng-class="{:'active':moblie.activeTab==='desicription'}"><a ng-click ="store.setActiveTab(moblie,'desicription')">desicription</a></li>
+            <li role="presentation" ng-class="{:'active':moblie.activeTab==='specfications'}"><a ng-click ="store.setActiveTab(moblie,'specfications')">specfications</a></li>
+            <li role="presentation" ng-class="{:'active':moblie.activeTab==='reviews'}"><a ng-click ="store.setActiveTab(moblie,'reviews')">reviews</a></li>
+        </ul>
+        <p ng-show="moblie.activeTab==='desicription'">
+            desicription goes here
+        </p>
+        <p ng-show="moblie.activeTab==='specfications'">
+            specfications goes here
+        </p>
+        <p ng-show="moblie.activeTab==='reviews'">
+            reviews goes here
+        </p>
+    </div>
+</div>
+<script src="angular.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
